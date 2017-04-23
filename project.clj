@@ -1,4 +1,4 @@
-(defproject amazonica "0.3.96-stan8"
+(defproject org.clojars.stanhbb/amazonica "0.3.96-stan8"
   :description "A comprehensive Clojure client for the entire Amazon AWS api."
   :url "https://github.com/mcohen01/amazonica"
   :license {:name "Eclipse Public License"
@@ -14,3 +14,4 @@
                  [joda-time "2.9.6"]
                  [robert/hooke "1.3.0"]
                  [com.taoensso/nippy "2.12.2"]])
+
