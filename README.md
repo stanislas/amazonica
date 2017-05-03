@@ -7,7 +7,7 @@ A comprehensive Clojure client for the entire [Amazon AWS api][1].
 
 Leiningen coordinates:
 ```clj
-[amazonica "0.3.95"]
+[amazonica "0.3.96"]
 ```
 
 For Maven users:
@@ -26,7 +26,7 @@ and the following dependency:
 <dependency>
   <groupId>amazonica</groupId>
   <artifactId>amazonica</artifactId>
-  <version>0.3.95</version>
+  <version>0.3.96</version>
 </dependency>
 ```
 
@@ -1290,7 +1290,12 @@ To put metric data.   [UnitTypes](http://docs.aws.amazon.com/AmazonCloudWatch/la
 
 (copy-object bucket1 "key-1" bucket2 "key-2")
 
-(get-object bucket2 "key-2"))
+(-> (get-object bucket2 "key-2")
+    :input-stream
+    slurp)
+;; (note that the InputStream returned by GetObject should be closed,
+;; e.g. via slurp here, or the HTTP connection pool will be exhausted
+;; after several objects are retrieved)
 
 (generate-presigned-url bucket1 "key-1" (-> 6 hours from-now))
 
